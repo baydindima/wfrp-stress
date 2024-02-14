@@ -20,7 +20,7 @@ class StressManager {
         this._addStressToActor(actor)
 
         if (mainRowElement) {
-            const templatePath = 'modules/mykislev/templates/partials/stress-character-sheet.hbs';
+            const templatePath = 'modules/wfrp-stress/templates/partials/stress-character-sheet.hbs';
             try {
                 const content = await renderTemplate(templatePath, actor);
                 mainRowElement.append(content);
@@ -68,7 +68,7 @@ class StressManager {
     async _postStressTest(testStrength) {
         try {
             const strength = testStrength ? testStrength : "minor"
-            const html = await renderTemplate("modules/mykislev/templates/partials/stress-button.hbs", { strength });
+            const html = await renderTemplate("modules/wfrp-stress/templates/partials/stress-button.hbs", { strength });
             ChatMessage.create({ content: html });
         } catch (error) {
             console.error("Error posting stress test:", error);
