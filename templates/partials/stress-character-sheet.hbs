@@ -1,0 +1,20 @@
+<div class="stress row-section">
+    <div class="stress-section">
+        <span class="top label">{{localize "Stress"}}</span>
+        <div class="stress-value-box">
+            <div id="value">
+                <input name="system.status.stress.value" type="text" value="{{system.status.stress.value}}" data-dtype="Number">
+            </div>
+            <div id="divisor" class="divisor">
+                /
+            </div>
+            <div id="stress-max">
+                {{#if actor.flags.autoCalcStress}}
+                    <a class="auto-calc-toggle" toggle-type="stress">{{system.status.stress.max}}</a>
+                {{else}}
+                    <input class="auto-calc-toggle" toggle-type="stress" name="system.status.stress.max" type="text" value="{{system.status.stress.max}}" data-dtype="Number">
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

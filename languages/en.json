@@ -1,0 +1,12 @@
+{
+  "Stress" : "Stress",
+  "CHAT.GainingStress" : "Gaining Stress",
+  "CHAT.StressPass" : "<b>{name}: Nah, I’m fine</b> Nothing happens.",
+  "CHAT.StressFail" : "<b>{name}: What fresh horror is this?</b> The event sinks into you and does not go away. Gain {number} Stress points.",
+  "CHAT.StressFumble" : "<b>{name}: Nooooooooooooooo!</b> - Immediately gain 1 Affliction",
+  "CHAT.StressCritical" : "<b>{name}: I know no fear!</b> You deny the great horror before you. Lose all current Stress points.",
+  "CHAT.StressAffliction" : "<b>{name}</b> Your stress points exceeded your stress threshold, attempt a cool test.",
+  "CHAT.StressReroll" : "<b>{name}</b> rerolled stress, with the new result their stress changes by {number}.",
+  "ErrorStress": "Invalid Stress Type",
+  "DIALOG.StressTestTitle" : "Gaining Stress - {test} Test"
+}

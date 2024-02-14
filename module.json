@@ -1,0 +1,44 @@
+{
+  "id": "wfrp-stress",
+  "title": "WFRP Stress",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "scripts": [
+    "initialization.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    },
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "languages/ru.json"
+    }
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "html",
+        "hbs",
+        "mjs",
+        "js",
+        "json"
+      ],
+      "paths": [
+        "templates/",
+        "modules/",
+        "styles/",
+        "languages/"
+      ]
+    }
+  },
+  "styles": ["./css/wfrp-stress.css"],
+  "socket": true
+}
