@@ -143,7 +143,7 @@ class StressManager {
         const { outcome, roll, target, SL } = test.result;
         const failed = outcome === "failure";
         let stressGained = 0;
-        let newStress = Number(actor.system.status.stress.value);
+        let newStress = Number(actor.flags.core.stress.value);
 
         // Determine if the test is a fumble or critical
         const isFumble = failed && this._isFumble(roll, target);
@@ -172,10 +172,10 @@ class StressManager {
         }
 
         // Update actor's stress
-        await actor.update({ "system.status.stress.value": newStress });
+        await actor.update({ "flags.core.stress.value": newStress });
 
         // Handle stress affliction
-        if (actor.system.status.stress.max && newStress > actor.system.status.stress.max) {
+        if (actor.flags.core.stress.max && newStress > actor.flags.core.stress.max) {
             this._createStressResultChatMessage("StressAffliction", actor.name, "gmroll");
         }
     }
@@ -202,7 +202,7 @@ class StressManager {
      * @private
      */
     _addStressToActor(actor) {
-        const stressPath = "system.status.stress";
+        const stressPath = "flags.core.stress";
         let stress = getProperty(actor, stressPath);
 
         // If the stress object doesn't exist, initialize it
@@ -223,32 +223,10 @@ class StressManager {
         // }
 
         // Update the actor with the new or updated stress object
-        let updateData = {};
-        setProperty(updateData, stressPath, stress);
-        actor.update(updateData);
+        actor.setFlag('core', 'stress', stress);
     }
 }
 
 Hooks.on("setup", () => {
-
-    let template = {
-        Actor: {
-            templates: {
-                status: {
-                    status: {
-                        "stress": {
-                            "type": "Number",
-                            "label": "Stress",
-                            "value": 0,
-                            "max": 10
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    mergeObject(game.template, template);
-
     new StressManager().initialize();
 });
