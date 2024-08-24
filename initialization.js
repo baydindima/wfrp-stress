@@ -38,11 +38,11 @@ class StressManager {
      * @param {String} stressLevel - The level of stress (major, moderate).
      */
     _performStressTest(actor, stressLevel) {
-        let difficulty = 0;
+        let difficulty = "average";
         if (stressLevel === "major") {
-            difficulty = 3;
+            difficulty = "vhard";
         } else if (stressLevel === "moderate") {
-            difficulty = 1;
+            difficulty = "difficult";
         }
 
         let skill = actor.getItemTypes("skill").find(i => i.name == game.i18n.localize("NAME.Cool"));
@@ -50,13 +50,13 @@ class StressManager {
             actor.setupSkill(skill, {
                 title: game.i18n.format("DIALOG.StressTestTitle", { test: skill.name }),
                 stress: stressLevel,
-                modify: { difficulty: difficulty }
+                fields: { difficulty: difficulty }
             }).then(setupData => actor.basicTest(setupData));
         } else {
             actor.setupCharacteristic("wp", {
                 title: game.i18n.format("DIALOG.StressTestTitle", { test: game.wfrp4e.config.characteristics["wp"] }),
                 stress: stressLevel,
-                modify: { difficulty: difficulty }
+                fields: { difficulty: difficulty }
             }).then(setupData => actor.basicTest(setupData));
         }
     }
