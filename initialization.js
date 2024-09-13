@@ -3,7 +3,10 @@ class StressManager {
      * Initializes the StressManager and hooks into the game events.
      */
     initialize() {
+        // worked before
         Hooks.on("renderActorSheetWfrp4eCharacter", this._addStressToSheet.bind(this));
+        // works after 12V update
+        Hooks.on("renderActorSheetWFRP4eCharacter", this._addStressToSheet.bind(this));
         Hooks.on("chatMessage", this._handleChatMessage.bind(this));
         Hooks.on('renderChatLog', this._handleChatLogRender.bind(this));
         Hooks.on("wfrp4e:rollTest", this._processStressTest.bind(this));
@@ -40,9 +43,9 @@ class StressManager {
     _performStressTest(actor, stressLevel) {
         let difficulty = "average";
         if (stressLevel === "major") {
-            difficulty = "vhard";
+            difficulty = "hard";
         } else if (stressLevel === "moderate") {
-            difficulty = "difficult";
+            difficulty = "challenging";
         }
 
         let skill = actor.getItemTypes("skill").find(i => i.name == game.i18n.localize("NAME.Cool"));
