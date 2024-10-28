@@ -48,7 +48,7 @@ class StressManager {
             difficulty = "challenging";
         }
 
-        let skill = actor.getItemTypes("skill").find(i => i.name == game.i18n.localize("NAME.Cool"));
+        let skill = actor.itemTags["skill"].find(i => i.name == game.i18n.localize("NAME.Cool"));
         if (skill) {
             actor.setupSkill(skill, {
                 title: game.i18n.format("DIALOG.StressTestTitle", { test: skill.name }),
